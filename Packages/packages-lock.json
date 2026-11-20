@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.daniel-geo.unityhackatime": {
+      "version": "file:C:/Users/azhar/Desktop/unity-hackatime-main/unity-hackatime-main/Assets/com.daniel-geo.unityhackatime",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "2.0.0",
       "depth": 2,
