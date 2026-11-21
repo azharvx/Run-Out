@@ -8,10 +8,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private bool isGrounded;
+    private Animator anim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -24,6 +26,17 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = runSpeed;
         }
+
+        if (x != 0 || z != 0)
+            {
+                anim.SetBool("isRunning", true);
+            }
+            else
+            {
+                anim.SetBool("isRunning", false);
+            }
+
+            anim.SetBool("isGrounded", isGrounded);
 
         Vector3 move = new Vector3(x * speed, rb.linearVelocity.y, z * speed);
         rb.linearVelocity = move;
