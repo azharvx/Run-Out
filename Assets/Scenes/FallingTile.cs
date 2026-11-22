@@ -7,10 +7,14 @@ public class FallingTile : MonoBehaviour
     private Rigidbody rb;
     private bool touched = false;
     private float timer = 0f;
+    private Vector3 startPos;
+    private Quaternion startRot;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startPos = transform.position;
+        startRot = transform.rotation;
     }
     void Update()
     {
@@ -20,6 +24,15 @@ public class FallingTile : MonoBehaviour
             if (timer >= fallDelay)
             {
                 rb.isKinematic = false;
+            }
+            if (timer >= fallDelay + 4f)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.isKinematic = true;
+                transform.position = startPos;
+                transform.rotation = startRot;
+                touched = false;
+                timer = 0f;
             }
         }
     }

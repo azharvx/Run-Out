@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float jumpForce = 6f;
+    public Transform spawnPoint;
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -47,9 +48,10 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
 
-        if (transform.position.y < -5f)
+        if (transform.position.y < -5f && spawnPoint != null)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            rb.linearVelocity = Vector3.zero;
+            transform.position = spawnPoint.position;
         }
     }
 
